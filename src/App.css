@@ -1,0 +1,91 @@
+/* Sarvajana Seva - Custom Styles */
+
+/* Ensure smooth scrolling for the entire application */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom font for Devanagari text */
+.devanagari-text {
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+}
+
+/* Gradient text utilities */
+.gradient-text-orange {
+  background: linear-gradient(to right, #ea580c, #dc2626);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom button hover effects */
+.btn-hover-lift {
+  transition: all 0.3s ease;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Devotional animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Om symbol glow effect */
+.om-glow {
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #f59e0b, #dc2626);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #d97706, #b91c1c);
+}
+
+/* Logo specific styles */
+.logo-container {
+  transition: all 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
+}
+
+.logo-image {
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.1);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
