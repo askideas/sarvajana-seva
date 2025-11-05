@@ -3,15 +3,6 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 const Poojas = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const poojaCategories = [
-    { id: 'all', name: 'All Poojas', icon: '🪔' },
-    { id: 'festivals', name: 'Festival Poojas', icon: '🎊' },
-    { id: 'personal', name: 'Personal Rituals', icon: '🙏' },
-    { id: 'prosperity', name: 'Prosperity Poojas', icon: '💎' },
-    { id: 'health', name: 'Health & Wellness', icon: '🌿' }
-  ];
 
   const poojas = [
     {
@@ -104,9 +95,7 @@ const Poojas = () => {
     }
   ];
 
-  const filteredPoojas = selectedCategory === 'all' 
-    ? poojas 
-    : poojas.filter(pooja => pooja.category === selectedCategory);
+
 
   return (
     <div>
@@ -145,36 +134,14 @@ const Poojas = () => {
         </div>
       </section>
 
-      {/* Categories Filter */}
-      <section className="py-12 bg-white sticky top-16 z-40 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
-            {poojaCategories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-100 text-gray-700 hover:bg-orange-100 hover:text-orange-700'
-                }`}
-              >
-                <span className="text-lg">{category.icon}</span>
-                <span>{category.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Poojas Grid */}
       <section className="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {selectedCategory === 'all' 
-                ? 'All Sacred Rituals' 
-                : `${poojaCategories.find(c => c.id === selectedCategory)?.name}`}
+              Our Sacred Rituals & Poojas
             </h2>
             <p className="text-gray-600">
               Each pooja is performed with complete devotion and authentic Vedic procedures
@@ -182,7 +149,7 @@ const Poojas = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPoojas.map((pooja) => (
+            {poojas.map((pooja) => (
               <div
                 key={pooja.id}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-orange-100 overflow-hidden"

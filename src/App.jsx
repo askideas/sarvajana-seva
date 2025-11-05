@@ -7,6 +7,8 @@ import Poojas from './pages/Poojas';
 import Donations from './pages/Donations';
 import Astrology from './pages/Astrology';
 import Contact from './pages/Contact';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/poojas" element={<Poojas />} />
           <Route path="/donations" element={<Donations />} />
           <Route path="/astrology" element={<Astrology />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>

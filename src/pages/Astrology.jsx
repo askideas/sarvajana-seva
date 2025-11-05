@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 const Astrology = () => {
-  const [selectedService, setSelectedService] = useState('consultation');
 
   const services = [
     {
@@ -62,7 +61,7 @@ const Astrology = () => {
     }
   ];
 
-  const currentService = services.find(s => s.id === selectedService) || services[0];
+
 
   const specializations = [
     {
@@ -155,114 +154,69 @@ const Astrology = () => {
         </div>
       </section>
 
-      {/* Services Navigation */}
-      <section className="py-12 bg-white sticky top-16 z-40 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
-            {services.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => setSelectedService(service.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 ${
-                  selectedService === service.id
-                    ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-700'
-                }`}
-              >
-                <span className="text-lg">{service.icon}</span>
-                <span className="hidden sm:inline">{service.title}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Selected Service Detail */}
+
+      {/* Astrology Services Grid */}
       <section className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:flex lg:items-start lg:space-x-16">
-            <div className="lg:w-1/2 mb-12 lg:mb-0">
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white text-2xl">{currentService.icon}</span>
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900">{currentService.title}</h2>
-                    <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
-                      <span>⏰ {currentService.duration}</span>
-                      <span className="text-2xl font-bold text-purple-600">{currentService.price}</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Our Astrology Services
+            </h2>
+            <p className="text-gray-600">
+              Comprehensive Vedic astrology consultations for guidance and spiritual insight
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <div
+                key={service.id}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-purple-100 overflow-hidden"
+              >
+                {/* Header */}
+                <div className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">{service.icon}</span>
+                      <h3 className="text-xl font-bold leading-tight">{service.title}</h3>
                     </div>
+                    <span className="text-2xl font-bold">{service.price}</span>
+                  </div>
+                  <div className="text-sm text-purple-100">
+                    <span>⏰ {service.duration}</span>
                   </div>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  {currentService.description}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
 
-                <div className="mb-8">
-                  <h3 className="font-semibold text-gray-900 mb-4">What's Included:</h3>
-                  <ul className="space-y-2">
-                    {currentService.includes.map((item, index) => (
-                      <li key={index} className="flex items-start text-sm text-gray-600">
-                        <span className="text-purple-500 mr-3 mt-1">✓</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Link
-                  to="/contact"
-                  className="w-full block text-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-4 rounded-xl font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  Book Consultation Now ✨
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:w-1/2">
-              <div className="space-y-6">
-                <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Our Astrology Expert</h3>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">🔮</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Dr. Meera Devi</h4>
-                      <p className="text-purple-600 text-sm font-medium">Vedic Astrology Consultant</p>
-                      <p className="text-gray-600 text-sm">20+ years experience in Jyotish Shastra</p>
-                    </div>
+                  {/* What's Included */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 mb-2">What's Included:</h4>
+                    <ul className="space-y-1">
+                      {service.includes.map((item, index) => (
+                        <li key={index} className="flex items-center text-sm text-gray-600">
+                          <span className="text-purple-500 mr-2">✓</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="mt-4 space-y-2 text-sm text-gray-600">
-                    <p>• Certified from Bharatiya Vidya Bhavan</p>
-                    <p>• Specializes in marriage compatibility & career guidance</p>
-                    <p>• Expert in remedial astrology & gemstone therapy</p>
-                    <p>• Fluent in Hindi, English, and Sanskrit</p>
-                  </div>
-                </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Consultation Process</h3>
-                  <div className="space-y-3">
-                    {[
-                      { step: '1', text: 'Provide birth details (date, time, place)' },
-                      { step: '2', text: 'Schedule consultation appointment' },
-                      { step: '3', text: 'Detailed chart analysis session' },
-                      { step: '4', text: 'Receive written report & remedies' }
-                    ].map((item) => (
-                      <div key={item.step} className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">{item.step}</span>
-                        </div>
-                        <span className="text-gray-700 text-sm">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {/* Action Button */}
+                  <Link
+                    to="/contact"
+                    className="w-full block text-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300"
+                  >
+                    Book Consultation ✨
+                  </Link>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

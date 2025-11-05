@@ -7,12 +7,13 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Poojas', path: '/poojas' },
-    { name: 'Donations', path: '/donations' },
-    { name: 'Astrology', path: '/astrology' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Home', path: '/', icon: '🏠' },
+    { name: 'About', path: '/about', icon: '📖' },
+    { name: 'Poojas', path: '/poojas', icon: '🪔' },
+    { name: 'Products', path: '/products', icon: '🛍️' },
+    { name: 'Donations', path: '/donations', icon: '🙏' },
+    { name: 'Astrology', path: '/astrology', icon: '✨' },
+    { name: 'Contact', path: '/contact', icon: '📞' }
   ];
 
   return (
@@ -40,18 +41,22 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                className={`group relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 flex items-center space-x-2 ${
                   location.pathname === item.path
-                    ? 'text-orange-700 bg-orange-200/50'
-                    : 'text-gray-700 hover:text-orange-600 hover:bg-orange-100/30'
+                    ? 'text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-lg transform scale-105'
+                    : 'text-gray-700 hover:text-orange-600 hover:bg-white hover:shadow-md transform hover:scale-105'
                 }`}
               >
-                {item.name}
+                <span className="text-base">{item.icon}</span>
+                <span>{item.name}</span>
+                {location.pathname === item.path && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                )}
               </Link>
             ))}
           </div>
@@ -89,19 +94,23 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2">
+            <div className="px-3 pt-3 pb-4 space-y-2 bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-2xl mt-3 border border-orange-100">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
+                  className={`flex items-center space-x-3 px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
                     location.pathname === item.path
-                      ? 'text-orange-700 bg-orange-200/50'
-                      : 'text-gray-700 hover:text-orange-600 hover:bg-orange-100/30'
+                      ? 'text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-lg transform scale-105'
+                      : 'text-gray-700 hover:text-orange-600 hover:bg-white hover:shadow-md transform hover:scale-105'
                   }`}
                 >
-                  {item.name}
+                  <span className="text-lg">{item.icon}</span>
+                  <span>{item.name}</span>
+                  {location.pathname === item.path && (
+                    <span className="ml-auto text-orange-200">●</span>
+                  )}
                 </Link>
               ))}
             </div>
