@@ -191,12 +191,12 @@ const Header = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           {/* Backdrop */}
-          <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"></div>
+          <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300" style={{backgroundColor: 'rgba(0,0,0,0.5)'}}></div>
           
           {/* Sidebar */}
-          <div className="mobile-sidebar fixed top-0 right-0 h-full w-64 sm:w-72 bg-gradient-to-b from-white to-stone-50 shadow-2xl transform transition-transform duration-300 ease-in-out">
-            {/* Sidebar Header */}
-            <div className="flex items-center justify-between p-4 border-b border-stone-200">
+          <div className="mobile-sidebar fixed top-0 right-0 h-full w-64 sm:w-72 bg-gradient-to-b from-white to-stone-50 shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col">
+            {/* Sidebar Header - Fixed */}
+            <div className="flex items-center justify-between p-4 border-b border-stone-200 flex-shrink-0">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 rounded-full overflow-hidden shadow-md border-2 border-stone-200">
                   <img 
@@ -224,8 +224,10 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Navigation Links */}
-            <div className="py-4">
+            {/* Scrollable Content Area */}
+            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100 animate-fade-in pb-4">
+              {/* Navigation Links */}
+              <div className="py-4">
               {navigation.map((item, index) => (
                 <Link
                   key={item.name}
@@ -282,14 +284,13 @@ const Header = () => {
                   
                   {/* Accordion Content */}
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       isMobileLanguageAccordionOpen 
-                        ? 'max-h-60 opacity-100' 
+                        ? 'max-h-96 opacity-100' 
                         : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
-                      <div className="space-y-2 pb-2">
+                    <div className="space-y-2 pb-2">
                         {availableLanguages.map((lang, index) => (
                           <button
                             key={lang.code}
@@ -319,6 +320,7 @@ const Header = () => {
                   </div>
                 </div>
               </div>
+            {/* End of Scrollable Content Area */}
             </div>
           </div>
         </div>
