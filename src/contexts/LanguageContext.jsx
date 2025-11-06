@@ -136,7 +136,47 @@ const translations = {
     dharmaDesc: 'Living in accordance with cosmic law and righteousness',
     ahimsaDesc: 'Non-violence in thought, word, and action',
     sevaDesc: 'Selfless service to humanity and all living beings',
-    mokshaDesc: 'Liberation through spiritual realization and devotion'
+    mokshaDesc: 'Liberation through spiritual realization and devotion',
+    
+    // Home page - comprehensive
+    experienceTheDivine: 'Experience the divine through authentic Vedic rituals performed by experienced priests with traditional procedures and sacred materials.',
+    beginYourJourney: 'Begin Your Spiritual Journey Today',
+    connectWithDivine: 'Connect with the divine through our authentic spiritual services and community guidance.',
+    featuredServices: 'Featured Services',
+    authenticVedicRituals: 'Authentic Vedic Rituals',
+    spiritualConsultations: 'Spiritual Consultations',
+    sacredProducts: 'Sacred Products',
+    testimonials: 'What Our Community Says',
+    testimonial1: 'The Ganesh Chaturthi celebration at Sarvajana Seva was absolutely divine. The priests were knowledgeable and the arrangements were perfect.',
+    testimonial2: 'I found great peace and guidance through their astrology consultation. Highly recommend their authentic approach.',
+    testimonial3: 'The spiritual products I purchased have brought positive energy to my home. Excellent quality and blessed items.',
+    testimonialAuthor1: 'Priya Sharma',
+    testimonialAuthor2: 'Rajesh Kumar',
+    testimonialAuthor3: 'Meera Devi',
+    testimonialLocation1: 'Mumbai, India',
+    testimonialLocation2: 'Delhi, India',
+    testimonialLocation3: 'Bangalore, India',
+    
+    // Service descriptions
+    authenticVedicRitualsDesc: 'Traditional Hindu rituals performed with devotion and proper vedic procedures',
+    divineGuidanceDesc: 'Seek divine guidance through ancient astrological wisdom',
+    spiritualConsultationsDesc: 'Find peace and direction through spiritual guidance and support',
+    
+    // Common CTA and buttons
+    exploreServices: 'Explore Services',
+    getInTouch: 'Get in Touch',
+    scheduleConsultation: 'Schedule Consultation',
+    viewMore: 'View More',
+    learnMore: 'Learn More',
+    
+    // Form elements
+    name: 'Name',
+    email: 'Email',
+    phone: 'Phone',
+    selectService: 'Select Service',
+    yourMessage: 'Your Message',
+    required: 'Required',
+    optional: 'Optional'
   },
   
   te: {
@@ -261,7 +301,47 @@ const translations = {
     dharmaDesc: 'విశ్వ నియమం మరియు ధర్మానికి అనుగుణంగా జీవించడం',
     ahimsaDesc: 'ఆలోచన, మాట మరియు చర్యలో అహింస',
     sevaDesc: 'మానవత్వం మరియు అన్ని జీవులకు నిస్వార్థ సేవ',
-    mokshaDesc: 'ఆధ్యాత్మిక సాక్షాత్కారం మరియు భక్తి ద్వారా విముక్తి'
+    mokshaDesc: 'ఆధ్యాత్మిక సాక్షాత్కారం మరియు భక్తి ద్వారా విముక్తి',
+    
+    // Home page - comprehensive
+    experienceTheDivine: 'అనుభవజ్ఞులైన పూజారులు సంప్రదాయ విధానాలు మరియు పవిత్ర సామగ్రితో నిర్వహించే ప్రామాణిక వైదిక కర్మల ద్వారా దైవాన్ని అనుభవించండి.',
+    beginYourJourney: 'ఈ రోజే మీ ఆధ్యాత్మిక యాత్రను ప్రారంభించండి',
+    connectWithDivine: 'మా ప్రామాణిక ఆధ్యాత్మిక సేవలు మరియు సమాజ మార్గదర్శకత్వం ద్వారా దైవంతో కనెక్ట్ అవ్వండి.',
+    featuredServices: 'ప్రధాన సేవలు',
+    authenticVedicRituals: 'ప్రామాణిక వైదిక కర్మలు',
+    spiritualConsultations: 'ఆధ్యాత్మిక సలహాలు',
+    sacredProducts: 'పవిత్ర ఉత్పత్తులు',
+    testimonials: 'మా సమాజం ఏమి చెబుతుంది',
+    testimonial1: 'సర్వజన సేవలో గణేశ చతుర్థి వేడుకలు చాలా దివ్యంగా ఉన్నాయి. పూజారులు జ్ఞానవంతులు మరియు ఏర్పాట్లు ఖచ్చితంగా ఉన్నాయి.',
+    testimonial2: 'వారి జ్యోతిష్య సలహా ద్వారా నేను గొప్ప శాంతి మరియు మార్గదర్శకత్వం పొందాను. వారి ప్రామాణిక విధానాన్ని అత్యంత సిఫార్సు చేస్తున్నాను.',
+    testimonial3: 'నేను కొన్న ఆధ్యాత్మిక ఉత్పత్తులు నా ఇంటికి సానుకూల శక్తిని తెచ్చాయి. అద్భుతమైన నాణ్యత మరియు ఆశీర్వదించబడిన వస్తువులు.',
+    testimonialAuthor1: 'ప్రియా శర్మ',
+    testimonialAuthor2: 'రాజేష్ కుమార్',
+    testimonialAuthor3: 'మీరా దేవి',
+    testimonialLocation1: 'ముంబై, భారతదేశం',
+    testimonialLocation2: 'ఢిల్లీ, భారతదేశం',
+    testimonialLocation3: 'బెంగళూరు, భారతదేశం',
+    
+    // Service descriptions
+    authenticVedicRitualsDesc: 'భక్తి మరియు సరైన వైదిక విధానాలతో నిర్వహించబడే సంప్రదాయ హిందూ కర్మలు',
+    divineGuidanceDesc: 'పురాతన జ్యోతిష్య జ్ఞానం ద్వారా దైవిక మార్గదర్శకత్వం పొందండి',
+    spiritualConsultationsDesc: 'ఆధ్యాత్మిక మార్గదర్శకత్వం మరియు మద్దతు ద్వారా శాంతి మరియు దిశను కనుగొనండి',
+    
+    // Common CTA and buttons
+    exploreServices: 'సేవలను అన్వేషించండి',
+    getInTouch: 'సంప్రదించండి',
+    scheduleConsultation: 'సలహా షెడ్యూల్ చేయండి',
+    viewMore: 'మరింత చూడండి',
+    learnMore: 'మరింత తెలుసుకోండి',
+    
+    // Form elements
+    name: 'పేరు',
+    email: 'ఇమెయిల్',
+    phone: 'ఫోన్',
+    selectService: 'సేవను ఎంచుకోండి',
+    yourMessage: 'మీ సందేశం',
+    required: 'అవసరం',
+    optional: 'ఐచ్ఛికం'
   },
   
   ta: {
@@ -386,7 +466,47 @@ const translations = {
     dharmaDesc: 'அண்ட சட்டம் மற்றும் நீதியுணர்வுக்கு ஏற்ப வாழ்தல்',
     ahimsaDesc: 'சிந்தனை, சொல் மற்றும் செயலில் அகிம்சை',
     sevaDesc: 'மனிதகுலம் மற்றும் அனைத்து உயிரினங்களுக்கும் தன்னலமற்ற சேவை',
-    mokshaDesc: 'ஆன்மீக உணர்தல் மற்றும் பக்தியின் மூலம் விடுதலை'
+    mokshaDesc: 'ஆன்மீக உணர்தல் மற்றும் பக்தியின் மூலம் விடுதலை',
+    
+    // Home page - comprehensive
+    experienceTheDivine: 'அனுபவமிக்க பூசாரிகள் பாரம்பரிய முறைகள் மற்றும் புனித பொருட்களுடன் நடத்தும் உண்மையான வேத சடங்குகளின் மூலம் தெய்வீகத்தை அனுபவியுங்கள்.',
+    beginYourJourney: 'இன்றே உங்கள் ஆன்மீக பயணத்தைத் தொடங்குங்கள்',
+    connectWithDivine: 'எங்களின் உண்மையான ஆன்மீக சேவைகள் மற்றும் சமுதாய வழிகாட்டுதலின் மூலம் தெய்வீகத்துடன் இணையுங்கள்.',
+    featuredServices: 'சிறப்பு சேவைகள்',
+    authenticVedicRituals: 'உண்மையான வேத சடங்குகள்',
+    spiritualConsultations: 'ஆன்மீக ஆலோசனைகள்',
+    sacredProducts: 'புனித தயாரிப்புகள்',
+    testimonials: 'எங்கள் சமுதாயம் என்ன சொல்கிறது',
+    testimonial1: 'சர்வஜன சேவாவில் கணேஷ் சதுர்த்தி கொண்டாட்டம் முற்றிலும் தெய்வீகமாக இருந்தது. பூசாரிகள் அறிவுள்ளவர்களாகவும் ஏற்பாடுகள் சரியாகவும் இருந்தன.',
+    testimonial2: 'அவர்களின் ஜோதிட ஆலோசனையின் மூலம் நான் மிகுந்த அமைதியும் வழிகாட்டுதலும் பெற்றேன். அவர்களின் உண்மையான அணுகுமுறையை மிகவும் பரிந்துரைக்கிறேன்.',
+    testimonial3: 'நான் வாங்கிய ஆன்மீக தயாரிப்புகள் எனது வீட்டிற்கு நேர்மறையான ஆற்றலைக் கொண்டு வந்துள்ளன. சிறந்த தரம் மற்றும் ஆசீர்வதிக்கப்பட்ட பொருட்கள்.',
+    testimonialAuthor1: 'பிரியா சர்மா',
+    testimonialAuthor2: 'ராஜேஷ் குமார்',
+    testimonialAuthor3: 'மீரா தேவி',
+    testimonialLocation1: 'மும்பை, இந்தியா',
+    testimonialLocation2: 'தில்லி, இந்தியா',
+    testimonialLocation3: 'பெங்களூர், இந்தியா',
+    
+    // Service descriptions
+    authenticVedicRitualsDesc: 'பக்தி மற்றும் சரியான வேத முறைகளுடன் நடத்தப்படும் பாரம்பரிய இந்து சடங்குகள்',
+    divineGuidanceDesc: 'பண்டைய ஜோதிட ஞானத்தின் மூலம் தெய்வீக வழிகாட்டுதலைப் பெறுங்கள்',
+    spiritualConsultationsDesc: 'ஆன்மீக வழிகாட்டுதல் மற்றும் ஆதரவின் மூலம் அமைதியையும் திசையையும் கண்டறியுங்கள்',
+    
+    // Common CTA and buttons
+    exploreServices: 'சேவைகளை ஆராயுங்கள்',
+    getInTouch: 'தொடர்பில் இருங்கள்',
+    scheduleConsultation: 'ஆலோசனை திட்டமிடுங்கள்',
+    viewMore: 'மேலும் பார்க்கவும்',
+    learnMore: 'மேலும் அறிய',
+    
+    // Form elements
+    name: 'பெயர்',
+    email: 'மின்னஞ்சல்',
+    phone: 'தொலைபேசி',
+    selectService: 'சேவையை தேர்ந்தெடுக்கவும்',
+    yourMessage: 'உங்கள் செய்தி',
+    required: 'தேவையான',
+    optional: 'விருப்பமானது'
   },
   
   kn: {
@@ -511,7 +631,47 @@ const translations = {
     dharmaDesc: 'ಬ್ರಹ್ಮಾಂಡೀಯ ನಿಯಮ ಮತ್ತು ಸದಾಚಾರಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಜೀವಿಸುವುದು',
     ahimsaDesc: 'ಆಲೋಚನೆ, ಮಾತು ಮತ್ತು ಕ್ರಿಯೆಯಲ್ಲಿ ಅಹಿಂಸೆ',
     sevaDesc: 'ಮಾನವೀಯತೆ ಮತ್ತು ಎಲ್ಲಾ ಜೀವಿಗಳಿಗೆ ನಿಸ್ವಾರ್ಥ ಸೇವೆ',
-    mokshaDesc: 'ಆಧ್ಯಾತ್ಮಿಕ ಸಾಕ್ಷಾತ್ಕಾರ ಮತ್ತು ಭಕ್ತಿಯ ಮೂಲಕ ವಿಮೋಚನೆ'
+    mokshaDesc: 'ಆಧ್ಯಾತ್ಮಿಕ ಸಾಕ್ಷಾತ್ಕಾರ ಮತ್ತು ಭಕ್ತಿಯ ಮೂಲಕ ವಿಮೋಚನೆ',
+    
+    // Home page - comprehensive
+    experienceTheDivine: 'ಅನುಭವಿ ಪುರೋಹಿತರು ಸಾಂಪ್ರದಾಯಿಕ ವಿಧಾನಗಳು ಮತ್ತು ಪವಿತ್ರ ವಸ್ತುಗಳೊಂದಿಗೆ ನಡೆಸುವ ಪ್ರಾಮಾಣಿಕ ವೈದಿಕ ಕ್ರಿಯೆಗಳ ಮೂಲಕ ದೈವಿಕತ್ವವನ್ನು ಅನುಭವಿಸಿ.',
+    beginYourJourney: 'ಇಂದೇ ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಯಾತ್ರೆಯನ್ನು ಪ್ರಾರಂಭಿಸಿ',
+    connectWithDivine: 'ನಮ್ಮ ಪ್ರಾಮಾಣಿಕ ಆಧ್ಯಾತ್ಮಿಕ ಸೇವೆಗಳು ಮತ್ತು ಸಮುದಾಯ ಮಾರ್ಗದರ್ಶನದ ಮೂಲಕ ದೈವಿಕತ್ವದೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ.',
+    featuredServices: 'ಪ್ರಮುಖ ಸೇವೆಗಳು',
+    authenticVedicRituals: 'ಪ್ರಾಮಾಣಿಕ ವೈದಿಕ ಕ್ರಿಯೆಗಳು',
+    spiritualConsultations: 'ಆಧ್ಯಾತ್ಮಿಕ ಸಲಹೆಗಳು',
+    sacredProducts: 'ಪವಿತ್ರ ಉತ್ಪನ್ನಗಳು',
+    testimonials: 'ನಮ್ಮ ಸಮುದಾಯ ಏನು ಹೇಳುತ್ತದೆ',
+    testimonial1: 'ಸರ್ವಜನ ಸೇವಾದಲ್ಲಿ ಗಣೇಶ ಚತುರ್ಥಿ ಆಚರಣೆ ಸಂಪೂರ್ಣವಾಗಿ ದಿವ್ಯವಾಗಿತ್ತು. ಪುರೋಹಿತರು ಜ್ಞಾನಿಗಳಾಗಿದ್ದರು ಮತ್ತು ವ್ಯವಸ್ಥೆಗಳು ಪರಿಪೂರ್ಣವಾಗಿದ್ದವು.',
+    testimonial2: 'ಅವರ ಜ್ಯೋತಿಷ್ಯ ಸಲಹೆಯ ಮೂಲಕ ನಾನು ಅಪಾರ ಶಾಂತಿ ಮತ್ತು ಮಾರ್ಗದರ್ಶನವನ್ನು ಕಂಡುಕೊಂಡೆ. ಅವರ ಪ್ರಾಮಾಣಿಕ ವಿಧಾನವನ್ನು ಹೆಚ್ಚು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ.',
+    testimonial3: 'ನಾನು ಖರೀದಿಸಿದ ಆಧ್ಯಾತ್ಮಿಕ ಉತ್ಪನ್ನಗಳು ನನ್ನ ಮನೆಗೆ ಸಕಾರಾತ್ಮಕ ಶಕ್ತಿಯನ್ನು ತಂದಿವೆ. ಅತ್ಯುತ್ತಮ ಗುಣಮಟ್ಟ ಮತ್ತು ಆಶೀರ್ವದಿತ ವಸ್ತುಗಳು.',
+    testimonialAuthor1: 'ಪ್ರಿಯಾ ಶರ್ಮಾ',
+    testimonialAuthor2: 'ರಾಜೇಶ್ ಕುಮಾರ್',
+    testimonialAuthor3: 'ಮೀರಾ ದೇವಿ',
+    testimonialLocation1: 'ಮುಂಬೈ, ಭಾರತ',
+    testimonialLocation2: 'ದೆಹಲಿ, ಭಾರತ',
+    testimonialLocation3: 'ಬೆಂಗಳೂರು, ಭಾರತ',
+    
+    // Service descriptions
+    authenticVedicRitualsDesc: 'ಭಕ್ತಿ ಮತ್ತು ಸರಿಯಾದ ವೈದಿಕ ವಿಧಾನಗಳೊಂದಿಗೆ ನಡೆಸಲಾಗುವ ಸಾಂಪ್ರದಾಯಿಕ ಹಿಂದೂ ಕ್ರಿಯೆಗಳು',
+    divineGuidanceDesc: 'ಪ್ರಾಚೀನ ಜ್ಯೋತಿಷ್ಯ ಜ್ಞಾನದ ಮೂಲಕ ದೈವಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ',
+    spiritualConsultationsDesc: 'ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಬೆಂಬಲದ ಮೂಲಕ ಶಾಂತಿ ಮತ್ತು ದಿಕ್ಸೂಚಿಯನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ',
+    
+    // Common CTA and buttons
+    exploreServices: 'ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ',
+    getInTouch: 'ಸಂಪರ್ಕದಲ್ಲಿರಿ',
+    scheduleConsultation: 'ಸಲಹೆ ನಿಗದಿಪಡಿಸಿ',
+    viewMore: 'ಇನ್ನಷ್ಟು ನೋಡಿ',
+    learnMore: 'ಇನ್ನಷ್ಟು ತಿಳಿದುಕೊಳ್ಳಿ',
+    
+    // Form elements
+    name: 'ಹೆಸರು',
+    email: 'ಇಮೇಲ್',
+    phone: 'ಫೋನ್',
+    selectService: 'ಸೇವೆಯನ್ನು ಆರಿಸಿ',
+    yourMessage: 'ನಿಮ್ಮ ಸಂದೇಶ',
+    required: 'ಅಗತ್ಯ',
+    optional: 'ಐಚ್ಛಿಕ'
   },
   
   hi: {
@@ -636,7 +796,47 @@ const translations = {
     dharmaDesc: 'ब्रह्मांडीय नियम और धार्मिकता के अनुसार जीवन जीना',
     ahimsaDesc: 'विचार, वचन और कर्म में अहिंसा',
     sevaDesc: 'मानवता और सभी जीवों की निस्वार्थ सेवा',
-    mokshaDesc: 'आध्यात्मिक साक्षात्कार और भक्ति के माध्यम से मुक्ति'
+    mokshaDesc: 'आध्यात्मिक साक्षात्कार और भक्ति के माध्यम से मुक्ति',
+    
+    // Home page - comprehensive
+    experienceTheDivine: 'अनुभवी पुजारियों द्वारा पारंपरिक प्रक्रियाओं और पवित्र सामग्रियों के साथ किए जाने वाले प्रामाणिक वैदिक अनुष्ठानों के माध्यम से दिव्यता का अनुभव करें।',
+    beginYourJourney: 'आज ही अपनी आध्यात्मिक यात्रा शुरू करें',
+    connectWithDivine: 'हमारी प्रामाणिक आध्यात्मिक सेवाओं और समुदायिक मार्गदर्शन के माध्यम से दिव्यता के साथ जुड़ें।',
+    featuredServices: 'मुख्य सेवाएं',
+    authenticVedicRituals: 'प्रामाणिक वैदिक अनुष्ठान',
+    spiritualConsultations: 'आध्यात्मिक परामर्श',
+    sacredProducts: 'पवित्र उत्पाद',
+    testimonials: 'हमारा समुदाय क्या कहता है',
+    testimonial1: 'सर्वजन सेवा में गणेश चतुर्थी का उत्सव बिल्कुल दिव्य था। पुजारी जानकार थे और व्यवस्थाएं बिल्कुल सही थीं।',
+    testimonial2: 'मैंने उनके ज्योतिष परामर्श के माध्यम से महान शांति और मार्गदर्शन पाया। उनके प्रामाणिक दृष्टिकोण की अत्यधिक अनुशंसा करता हूं।',
+    testimonial3: 'मैंने जो आध्यात्मिक उत्पाद खरीदे हैं, उन्होंने मेरे घर में सकारात्मक ऊर्जा लाई है। उत्कृष्ट गुणवत्ता और आशीर्वादित वस्तुएं।',
+    testimonialAuthor1: 'प्रिया शर्मा',
+    testimonialAuthor2: 'राजेश कुमार',
+    testimonialAuthor3: 'मीरा देवी',
+    testimonialLocation1: 'मुंबई, भारत',
+    testimonialLocation2: 'दिल्ली, भारत',
+    testimonialLocation3: 'बैंगलोर, भारत',
+    
+    // Service descriptions
+    authenticVedicRitualsDesc: 'भक्ति और उचित वैदिक प्रक्रियाओं के साथ किए जाने वाले पारंपरिक हिंदू अनुष्ठान',
+    divineGuidanceDesc: 'प्राचीन ज्योतिषीय ज्ञान के माध्यम से दिव्य मार्गदर्शन प्राप्त करें',
+    spiritualConsultationsDesc: 'आध्यात्मिक मार्गदर्शन और समर्थन के माध्यम से शांति और दिशा खोजें',
+    
+    // Common CTA and buttons
+    exploreServices: 'सेवाओं का अन्वेषण करें',
+    getInTouch: 'संपर्क में रहें',
+    scheduleConsultation: 'परामर्श निर्धारित करें',
+    viewMore: 'और देखें',
+    learnMore: 'और जानें',
+    
+    // Form elements
+    name: 'नाम',
+    email: 'ईमेल',
+    phone: 'फोन',
+    selectService: 'सेवा चुनें',
+    yourMessage: 'आपका संदेश',
+    required: 'आवश्यक',
+    optional: 'वैकल्पिक'
   }
 };
 

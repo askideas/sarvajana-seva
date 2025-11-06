@@ -7,26 +7,26 @@ const Home = () => {
   const { translate } = useLanguage();
   const services = [
     {
-      title: 'Sacred Poojas',
-      description: 'Traditional Hindu rituals performed with devotion and proper vedic procedures',
+      title: translate('poojas'),
+      description: translate('authenticVedicRitualsDesc'),
       icon: '🪔',
       link: '/poojas'
     },
     {
-      title: 'Seva Donations',
-      description: 'Contribute to our noble cause and support spiritual activities',
+      title: translate('donations'),
+      description: translate('donate'),
       icon: '🙏',
       link: '/donations'
     },
     {
-      title: 'Astrology Guidance',
-      description: 'Seek divine guidance through ancient astrological wisdom',
+      title: translate('astrology'),
+      description: translate('divineGuidanceDesc'),
       icon: '✨',
       link: '/astrology'
     },
     {
-      title: 'Spiritual Counseling',
-      description: 'Find peace and direction through spiritual guidance and support',
+      title: translate('spiritualConsultations'),
+      description: translate('spiritualConsultationsDesc'),
       icon: '🕉️',
       link: '/contact'
     }
@@ -34,19 +34,19 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: 'Radha Sharma',
-      text: 'The poojas conducted here bring immense peace and positive energy to our family.',
-      location: 'Mumbai'
+      name: translate('testimonialAuthor1'),
+      text: translate('testimonial1'),
+      location: translate('testimonialLocation1')
     },
     {
-      name: 'Vikram Gupta',
-      text: 'Exceptional astrology guidance that has helped me make better life decisions.',
-      location: 'Delhi'
+      name: translate('testimonialAuthor2'),
+      text: translate('testimonial2'),
+      location: translate('testimonialLocation2')
     },
     {
-      name: 'Priya Nair',
-      text: 'A truly spiritual experience. The seva here is done with genuine devotion.',
-      location: 'Bangalore'
+      name: translate('testimonialAuthor3'),
+      text: translate('testimonial3'),
+      location: translate('testimonialLocation3')
     }
   ];
 
@@ -126,11 +126,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Sacred Services
+              {translate('featuredServices')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the divine through our carefully curated spiritual services, 
-              designed to bring peace, prosperity, and enlightenment to your life.
+              {translate('experienceTheDivine')}
             </p>
           </div>
 
@@ -164,23 +163,19 @@ const Home = () => {
           <div className="lg:flex lg:items-center lg:space-x-16">
             <div className="lg:w-1/2 mb-12 lg:mb-0">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Our Divine Mission
+                {translate('ourMission')}
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Rooted in ancient Vedic traditions, Sarvajana Seva is dedicated to serving 
-                humanity through spiritual guidance, sacred rituals, and compassionate service. 
-                We believe in the unity of all beings and the power of divine love.
+                {translate('missionDesc')}
               </p>
               <p className="text-gray-600 mb-8">
-                Our experienced priests and spiritual guides are committed to preserving 
-                the authenticity of Hindu traditions while making them accessible to all 
-                sincere seekers on the spiritual path.
+                {translate('experienceTheDivine')}
               </p>
               <Link
                 to="/about"
                 className="inline-flex items-center px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300"
               >
-                Learn More About Us
+                {translate('learnMore')}
                 <span className="ml-2">→</span>
               </Link>
             </div>
@@ -191,12 +186,10 @@ const Home = () => {
                     <span className="text-white font-bold text-3xl">🪔</span>
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                    Sacred Tradition
+                    {translate('sacredTradition')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    "In the service of humanity lies the worship of the Divine. 
-                    Through selfless action, we purify our hearts and awaken 
-                    the light within."
+                    "{translate('sacredTraditionDesc')}"
                   </p>
                 </div>
               </div>
@@ -210,10 +203,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Devotee Experiences
+              {translate('testimonials')}
             </h2>
             <p className="text-lg text-gray-600">
-              Hear from our community members about their spiritual journey with us
+              {translate('connectWithDivine')}
             </p>
           </div>
 
@@ -243,24 +236,23 @@ const Home = () => {
       <section className="py-20 bg-gradient-to-br from-orange-50 to-red-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6 text-gray-900">
-            Begin Your Spiritual Journey Today
+            {translate('beginYourJourney')}
           </h2>
           <p className="text-xl mb-8 text-gray-700">
-            Connect with the divine through our authentic spiritual services and 
-            join a community dedicated to service and enlightenment.
+            {translate('connectWithDivine')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Contact Us Today
+              {translate('getInTouch')}
             </Link>
             <Link
               to="/poojas"
               className="px-8 py-4 border-2 border-orange-500 text-orange-600 font-semibold rounded-full hover:bg-orange-100 transition-all duration-300 transform hover:scale-105"
             >
-              Book a Pooja
+              {translate('poojaBooking')}
             </Link>
           </div>
         </div>
