@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Donations = () => {
-  const { translate } = useLanguage();
   
   const [selectedAmount, setSelectedAmount] = useState('');
   const [customAmount, setCustomAmount] = useState('');

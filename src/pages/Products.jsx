@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Products = () => {
-  const { translate } = useLanguage();
   const products = [
     {
       id: 1,
@@ -125,7 +123,7 @@ const Products = () => {
     }
   ];
 
-  const categories = [translate('allProducts'), translate('pujaItems'), translate('spiritualAccessories'), translate('jewelry'), translate('aromatics'), translate('crystals'), translate('sacredPlants'), translate('books')];
+  const categories = ['All Products', 'Puja Items', 'Spiritual Accessories', 'Jewelry', 'Aromatics', 'Crystals', 'Sacred Plants', 'Books'];
 
   const [selectedCategory, setSelectedCategory] = React.useState('All Products');
 

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Footer = () => {
-  const { translate } = useLanguage();
   return (
     <footer className="bg-gradient-to-r from-orange-900 via-red-800 to-orange-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -41,26 +39,26 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-yellow-300">{translate('quickLinks')}</h3>
+            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/poojas" className="text-orange-200 hover:text-yellow-300 transition-colors">
-                  {translate('poojas')}
+                  Poojas
                 </Link>
               </li>
               <li>
                 <Link to="/donations" className="text-orange-200 hover:text-yellow-300 transition-colors">
-                  {translate('donations')}
+                  Donations
                 </Link>
               </li>
               <li>
                 <Link to="/astrology" className="text-orange-200 hover:text-yellow-300 transition-colors">
-                  {translate('astrology')}
+                  Astrology
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-orange-200 hover:text-yellow-300 transition-colors">
-                  {translate('contact')}
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -68,7 +66,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-yellow-300">{translate('connectWithUs')}</h3>
+            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Connect With Us</h3>
             <div className="space-y-2 text-orange-200">
               <p className="flex items-center">
                 <span className="mr-2">📧</span>

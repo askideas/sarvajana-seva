@@ -1,32 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Home = () => {
-  const { translate } = useLanguage();
   const services = [
     {
-      title: translate('poojas'),
-      description: translate('authenticVedicRitualsDesc'),
+      title: 'Sacred Poojas',
+      description: 'Authentic Vedic rituals performed with devotion and traditional precision for spiritual blessings.',
       icon: '🪔',
       link: '/poojas'
     },
     {
-      title: translate('donations'),
-      description: translate('donate'),
+      title: 'Donations',
+      description: 'Support our sacred mission and community service through your generous contributions.',
       icon: '🙏',
       link: '/donations'
     },
     {
-      title: translate('astrology'),
-      description: translate('divineGuidanceDesc'),
+      title: 'Astrology',
+      description: 'Divine guidance through ancient wisdom and personalized astrological consultations.',
       icon: '✨',
       link: '/astrology'
     },
     {
-      title: translate('spiritualConsultations'),
-      description: translate('spiritualConsultationsDesc'),
+      title: 'Spiritual Consultations',
+      description: 'Personal guidance for your spiritual journey and life\'s important decisions.',
       icon: '🕉️',
       link: '/contact'
     }
@@ -34,19 +32,19 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: translate('testimonialAuthor1'),
-      text: translate('testimonial1'),
-      location: translate('testimonialLocation1')
+      name: 'Priya Sharma',
+      text: 'The poojas conducted here brought immense peace to our family. The priests are knowledgeable and the rituals are performed with great devotion.',
+      location: 'Hyderabad, India'
     },
     {
-      name: translate('testimonialAuthor2'),
-      text: translate('testimonial2'),
-      location: translate('testimonialLocation2')
+      name: 'Rajesh Kumar',
+      text: 'Excellent astrological guidance! The predictions were accurate and the remedies suggested have brought positive changes in my life.',
+      location: 'Chennai, India'
     },
     {
-      name: translate('testimonialAuthor3'),
-      text: translate('testimonial3'),
-      location: translate('testimonialLocation3')
+      name: 'Meera Patel',
+      text: 'A truly spiritual experience. The organization\'s dedication to preserving ancient traditions is commendable. Highly recommended!',
+      location: 'Mumbai, India'
     }
   ];
 
@@ -80,20 +78,20 @@ const Home = () => {
             </h1>
             
             <p className="text-xl lg:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto leading-relaxed">
-              {translate('universalService')}
+              Universal Service for All - Connecting Hearts, Enriching Souls
             </p>
             
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              {translate('embracePath')} {translate('joinCommunity')}
+              Embrace the path of divine devotion and join our spiritual community.
             </p>
 
             {/* Sanskrit Sloka */}
             <div className="mb-12 p-6 bg-white/70 rounded-2xl shadow-lg max-w-xl mx-auto">
               <p className="text-lg text-orange-800 font-medium mb-2">
-                {translate('sarvesukhino')}
+                सर्वे सुखिनो भवन्तु सर्वे सन्तु निरामया
               </p>
               <p className="text-sm text-gray-600 italic">
-                "{translate('sarvesukinoTranslation')}"
+                "May all beings be happy, may all beings be free from illness"
               </p>
             </div>
 
@@ -103,13 +101,13 @@ const Home = () => {
                 to="/poojas"
                 className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                {translate('explorePoojas')} 🪔
+                Explore Poojas 🪔
               </Link>
               <Link
                 to="/donations"
                 className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full border-2 border-orange-500 hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                {translate('makeDonation')} 🙏
+                Make Donation 🙏
               </Link>
             </div>
           </div>
@@ -126,10 +124,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {translate('featuredServices')}
+              Featured Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {translate('experienceTheDivine')}
+              Experience the divine through our sacred offerings and spiritual guidance
             </p>
           </div>
 
@@ -163,19 +161,19 @@ const Home = () => {
           <div className="lg:flex lg:items-center lg:space-x-16">
             <div className="lg:w-1/2 mb-12 lg:mb-0">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                {translate('ourMission')}
+                Our Mission
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                {translate('missionDesc')}
+                To preserve and share ancient spiritual wisdom through authentic practices, fostering peace, prosperity, and universal well-being in our community.
               </p>
               <p className="text-gray-600 mb-8">
-                {translate('experienceTheDivine')}
+                Experience the divine through our sacred offerings and spiritual guidance
               </p>
               <Link
                 to="/about"
                 className="inline-flex items-center px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300"
               >
-                {translate('learnMore')}
+                Learn More
                 <span className="ml-2">→</span>
               </Link>
             </div>
@@ -186,10 +184,10 @@ const Home = () => {
                     <span className="text-white font-bold text-3xl">🪔</span>
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {translate('sacredTradition')}
+                    Sacred Tradition
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    "{translate('sacredTraditionDesc')}"
+                    "Rooted in ancient wisdom, our practices connect you with thousands of years of spiritual heritage and divine blessings."
                   </p>
                 </div>
               </div>
@@ -203,10 +201,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {translate('testimonials')}
+              Testimonials
             </h2>
             <p className="text-lg text-gray-600">
-              {translate('connectWithDivine')}
+              Stories of faith, transformation, and divine blessings from our community
             </p>
           </div>
 
@@ -236,23 +234,23 @@ const Home = () => {
       <section className="py-20 bg-gradient-to-br from-orange-50 to-red-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6 text-gray-900">
-            {translate('beginYourJourney')}
+            Begin Your Spiritual Journey
           </h2>
           <p className="text-xl mb-8 text-gray-700">
-            {translate('connectWithDivine')}
+            Connect with the divine through our sacred services and community
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              {translate('getInTouch')}
+              Get in Touch
             </Link>
             <Link
               to="/poojas"
               className="px-8 py-4 border-2 border-orange-500 text-orange-600 font-semibold rounded-full hover:bg-orange-100 transition-all duration-300 transform hover:scale-105"
             >
-              {translate('poojaBooking')}
+              Book a Pooja
             </Link>
           </div>
         </div>

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Poojas = () => {
-  const { translate } = useLanguage();
 
   const poojas = [
     {
@@ -118,7 +116,7 @@ const Poojas = () => {
               />
             </div>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              {translate('sacredRituals')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">{translate('poojas')}</span>
+              Sacred <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">Poojas</span>
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
               Experience the divine through authentic Vedic rituals performed by experienced priests
@@ -143,7 +141,7 @@ const Poojas = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {translate('poojaServices')}
+              Sacred Rituals for Spiritual Blessings
             </h2>
             <p className="text-gray-600">
               Each pooja is performed with complete devotion and authentic Vedic procedures
