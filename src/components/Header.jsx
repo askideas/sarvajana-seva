@@ -197,8 +197,8 @@ const Header = () => {
 
       {/* Mobile Sidebar */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 md:hidden">
-          <div className="mobile-sidebar flex flex-col h-full w-72 bg-white shadow-2xl">
+        <div className="fixed inset-0 z-50 md:hidden fade-in-backdrop" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className="mobile-sidebar flex flex-col h-full w-72 bg-white shadow-2xl ml-auto slide-in-right">
             {/* Sidebar Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gradient-to-r from-orange-50 to-red-50">
               <div className="flex items-center space-x-3">
