@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const Home = () => {
+  const { translate } = useLanguage();
   const services = [
     {
       title: 'Sacred Poojas',
@@ -78,21 +80,20 @@ const Home = () => {
             </h1>
             
             <p className="text-xl lg:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto leading-relaxed">
-              Universal Service for Spiritual Awakening
+              {translate('universalService')}
             </p>
             
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Embrace the path of devotion through sacred rituals, divine guidance, and selfless service. 
-              Join us in creating a spiritually enriched community.
+              {translate('embracePath')} {translate('joinCommunity')}
             </p>
 
             {/* Sanskrit Sloka */}
             <div className="mb-12 p-6 bg-white/70 rounded-2xl shadow-lg max-w-xl mx-auto">
               <p className="text-lg text-orange-800 font-medium mb-2">
-                सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः
+                {translate('sarvesukhino')}
               </p>
               <p className="text-sm text-gray-600 italic">
-                "May all beings be happy, may all beings be healthy"
+                "{translate('sarvesukinoTranslation')}"
               </p>
             </div>
 
@@ -102,13 +103,13 @@ const Home = () => {
                 to="/poojas"
                 className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Explore Poojas 🪔
+                {translate('explorePoojas')} 🪔
               </Link>
               <Link
                 to="/donations"
                 className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full border-2 border-orange-500 hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Make Donation 🙏
+                {translate('makeDonation')} 🙏
               </Link>
             </div>
           </div>

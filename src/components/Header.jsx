@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isMobileLanguageAccordionOpen, setIsMobileLanguageAccordionOpen] = useState(false);
   const location = useLocation();
+  const { translate, changeLanguage, getCurrentLanguage, availableLanguages } = useLanguage();
 
   // Close sidebar when clicking outside or pressing escape
   useEffect(() => {
@@ -18,12 +22,18 @@ const Header = () => {
       if (isMenuOpen && !e.target.closest('.mobile-sidebar') && !e.target.closest('.mobile-menu-button')) {
         setIsMenuOpen(false);
       }
+      if (isLanguageDropdownOpen && !e.target.closest('.language-dropdown') && !e.target.closest('.language-button')) {
+        setIsLanguageDropdownOpen(false);
+      }
     };
 
     if (isMenuOpen) {
       document.addEventListener('keydown', handleEscape);
       document.addEventListener('click', handleClickOutside);
       document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+    } else if (isLanguageDropdownOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('click', handleClickOutside);
     }
 
     return () => {
@@ -31,16 +41,22 @@ const Header = () => {
       document.removeEventListener('click', handleClickOutside);
       document.body.style.overflow = 'unset';
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isLanguageDropdownOpen]);
+
+  const handleLanguageSelect = (langCode) => {
+    changeLanguage(langCode);
+    setIsLanguageDropdownOpen(false);
+    setIsMobileLanguageAccordionOpen(false);
+  };
 
   const navigation = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Poojas', path: '/poojas' },
-    { name: 'Products', path: '/products' },
-    { name: 'Donations', path: '/donations' },
-    { name: 'Astrology', path: '/astrology' },
-    { name: 'Contact', path: '/contact' }
+    { name: translate('home'), path: '/' },
+    { name: translate('about'), path: '/about' },
+    { name: translate('poojas'), path: '/poojas' },
+    { name: translate('products'), path: '/products' },
+    { name: translate('donations'), path: '/donations' },
+    { name: translate('astrology'), path: '/astrology' },
+    { name: translate('contact'), path: '/contact' }
   ];
 
   return (
@@ -69,7 +85,7 @@ const Header = () => {
             </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -86,6 +102,57 @@ const Header = () => {
                 )}
               </Link>
             ))}
+            
+            {/* Login Button */}
+            <button className="mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
+              {translate('login')}
+            </button>
+
+            {/* Language Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                className="language-button flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors duration-300"
+              >
+                <span className="mr-1">🌐</span>
+                <span>{getCurrentLanguage().nativeName}</span>
+                <svg
+                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${isLanguageDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Language Dropdown Menu */}
+              {isLanguageDropdownOpen && (
+                <div className="language-dropdown absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                  <div className="py-1">
+                    {availableLanguages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageSelect(lang.code)}
+                        className={`w-full text-left px-4 py-2 text-sm hover:bg-orange-50 hover:text-orange-600 transition-colors ${
+                          getCurrentLanguage().code === lang.code 
+                            ? 'bg-orange-100 text-orange-600 font-semibold' 
+                            : 'text-gray-700'
+                        }`}
+                      >
+                        <span className="flex items-center">
+                          <span className="w-8 text-center">{lang.code === 'en' ? '🇺🇸' : lang.code === 'te' ? '🇮🇳' : lang.code === 'ta' ? '🇮🇳' : lang.code === 'kn' ? '🇮🇳' : '🇮🇳'}</span>
+                          <span className="ml-2">{lang.nativeName}</span>
+                          {getCurrentLanguage().code === lang.code && (
+                            <span className="ml-auto">✓</span>
+                          )}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
             {/* Mobile menu button */}
@@ -179,6 +246,79 @@ const Header = () => {
                   )}
                 </Link>
               ))}
+
+              {/* Mobile Login Button */}
+              <div className="px-4 py-2 mt-4">
+                <button 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                >
+                  {translate('login')}
+                </button>
+              </div>
+
+              {/* Mobile Language Selection Accordion */}
+              <div className="px-4 py-2">
+                <div className="border-t border-gray-200 pt-4">
+                  <button
+                    onClick={() => setIsMobileLanguageAccordionOpen(!isMobileLanguageAccordionOpen)}
+                    className="w-full flex items-center justify-between text-left text-sm font-semibold text-gray-700 mb-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <span className="flex items-center">
+                      <span className="mr-2">🌐</span>
+                      {translate('language')}
+                    </span>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isMobileLanguageAccordionOpen ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {/* Accordion Content */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isMobileLanguageAccordionOpen 
+                        ? 'max-h-60 opacity-100' 
+                        : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+                      <div className="space-y-2 pb-2">
+                        {availableLanguages.map((lang, index) => (
+                          <button
+                            key={lang.code}
+                            onClick={() => {
+                              handleLanguageSelect(lang.code);
+                              setIsMenuOpen(false);
+                            }}
+                            className={`w-full flex items-center p-3 text-sm rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                              getCurrentLanguage().code === lang.code 
+                                ? 'bg-gradient-to-r from-orange-100 to-red-100 text-orange-600 font-semibold border-2 border-orange-300 shadow-md' 
+                                : 'bg-gray-50 text-gray-700 hover:bg-orange-50 hover:text-orange-600 border border-gray-200 hover:border-orange-200'
+                            }`}
+                            style={{ animationDelay: `${index * 50}ms` }}
+                          >
+                            <span className="text-lg mr-3">{lang.code === 'en' ? '🇺🇸' : '🇮🇳'}</span>
+                            <div className="flex-1 text-left">
+                              <div className="font-medium">{lang.nativeName}</div>
+                              <div className="text-xs opacity-70">{lang.name}</div>
+                            </div>
+                            {getCurrentLanguage().code === lang.code && (
+                              <span className="text-orange-600 font-bold">✓</span>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

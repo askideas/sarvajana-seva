@@ -1,27 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import Logo from '../assets/logo.png';
 
 const About = () => {
+  const { translate } = useLanguage();
+  
   const values = [
     {
-      title: 'Dharma',
-      description: 'Living in accordance with cosmic law and righteousness',
+      title: translate('dharma'),
+      description: translate('dharmaDesc'),
       icon: '⚖️'
     },
     {
-      title: 'Ahimsa',
-      description: 'Non-violence in thought, word, and action',
+      title: translate('ahimsa'),
+      description: translate('ahimsaDesc'),
       icon: '🕊️'
     },
     {
-      title: 'Seva',
-      description: 'Selfless service to humanity and all living beings',
+      title: translate('seva'),
+      description: translate('sevaDesc'),
       icon: '🙏'
     },
     {
-      title: 'Moksha',
-      description: 'Liberation through spiritual realization and devotion',
+      title: translate('moksha'),
+      description: translate('mokshaDesc'),
       icon: '✨'
     }
   ];
@@ -109,13 +112,11 @@ const About = () => {
                     <span className="text-white font-bold text-2xl">🪔</span>
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                    Our Vision
+                    {translate('ourVision')}
                   </h3>
                 </div>
                 <p className="text-gray-700 text-center leading-relaxed mb-6">
-                  "To create a world where spiritual wisdom guides daily life, where 
-                  compassionate service heals suffering, and where divine consciousness 
-                  awakens in every heart."
+                  "{translate('visionDesc')}"
                 </p>
                 <div className="text-center">
                   <p className="text-orange-700 font-semibold text-lg">
@@ -136,7 +137,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Core Values
+              {translate('ourValues')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Rooted in eternal dharmic principles that guide our every action and service
