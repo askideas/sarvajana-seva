@@ -11,27 +11,43 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Profile from './pages/Profile';
 import { AuthProvider } from './contexts/AuthContext';
+import { LoadingProvider, useLoading } from './contexts/LoadingContext';
 import MobileNumberModal from './components/MobileNumberModal';
+import Loader from './components/Loader';
+
+const AppContent = () => {
+  const { isLoading } = useLoading();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/poojas" element={<Poojas />} />
+        <Route path="/donations" element={<Donations />} />
+        <Route path="/astrology" element={<Astrology />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Layout>
+  );
+};
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/poojas" element={<Poojas />} />
-              <Route path="/donations" element={<Donations />} />
-              <Route path="/astrology" element={<Astrology />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
-          </Layout>
-        <MobileNumberModal />
-        </Router>
+        <LoadingProvider>
+          <AppContent />
+          <MobileNumberModal />
+        </LoadingProvider>
+      </Router>
     </AuthProvider>
   );
 };
