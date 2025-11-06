@@ -40,13 +40,23 @@ export function AuthProvider({ children }) {
       
       console.log('Google sign-in successful:', user.email);
       
-      // Check if user exists in database
-      await handleUserData(user);
+      // Don't call handleUserData here - let onAuthStateChanged handle it
+      // This prevents duplicate calls
       
       return { success: true, user };
     } catch (error) {
       console.error('Google sign-in error:', error);
-      return { success: false, error: error.message };
+      let errorMessage = 'Login failed. Please try again.';
+      
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMessage = 'Login was cancelled.';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your internet connection.';
+      } else if (error.code === 'auth/popup-blocked') {
+        errorMessage = 'Popup blocked. Please allow popups for this site.';
+      }
+      
+      return { success: false, error: errorMessage };
     } finally {
       setLoading(false);
     }
@@ -55,12 +65,13 @@ export function AuthProvider({ children }) {
   // Handle user data storage
   const handleUserData = async (firebaseUser) => {
     try {
+      console.log('handleUserData called for:', firebaseUser.email);
       const userRef = doc(db, 'Users', firebaseUser.email);
       const userSnap = await getDoc(userRef);
       
       if (userSnap.exists()) {
         // Existing user
-        console.log('Existing user found');
+        console.log('Existing user found:', userSnap.data());
         const userData = userSnap.data();
         setUser({
           ...firebaseUser,
@@ -69,19 +80,33 @@ export function AuthProvider({ children }) {
         });
       } else {
         // New user - ask for mobile number
-        console.log('New user - asking for mobile number');
+        console.log('New user detected - showing mobile modal for:', firebaseUser.email);
         setPendingUser(firebaseUser);
         setShowMobileModal(true);
       }
     } catch (error) {
       console.error('Error handling user data:', error);
+      // Still set basic user data even if database operation fails
+      setUser({
+        uid: firebaseUser.uid,
+        email: firebaseUser.email,
+        displayName: firebaseUser.displayName,
+        photoURL: firebaseUser.photoURL,
+        isExisting: false
+      });
     }
   };
 
   // Save new user data with mobile number
   const saveNewUserData = async (mobileNumber) => {
     try {
-      if (!pendingUser) return { success: false, error: 'No pending user data' };
+      console.log('saveNewUserData called with mobile:', mobileNumber);
+      console.log('pendingUser:', pendingUser);
+      
+      if (!pendingUser) {
+        console.error('No pending user data found');
+        return { success: false, error: 'No pending user data found. Please try logging in again.' };
+      }
       
       const userData = {
         email: pendingUser.email,
@@ -93,27 +118,36 @@ export function AuthProvider({ children }) {
         isActive: true
       };
       
+      console.log('Saving user data to Firestore:', userData);
+      
       // Save to Firestore with email as document ID
       const userRef = doc(db, 'Users', pendingUser.email);
       await setDoc(userRef, userData);
       
-      console.log('New user data saved successfully');
+      console.log('User data saved successfully to Firestore');
       
       // Update user state
-      setUser({
-        ...pendingUser,
+      const newUser = {
+        uid: pendingUser.uid,
+        email: pendingUser.email,
+        displayName: pendingUser.displayName,
+        photoURL: pendingUser.photoURL,
         ...userData,
         isExisting: false
-      });
+      };
+      
+      console.log('Setting user state:', newUser);
+      setUser(newUser);
       
       // Clear pending state
       setPendingUser(null);
       setShowMobileModal(false);
       
+      console.log('New user registration completed successfully');
       return { success: true };
     } catch (error) {
       console.error('Error saving user data:', error);
-      return { success: false, error: error.message };
+      return { success: false, error: `Failed to save user data: ${error.message}` };
     }
   };
 

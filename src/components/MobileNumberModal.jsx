@@ -18,18 +18,33 @@ const MobileNumberModal = () => {
     }
     
     if (mobileNumber.length < 10) {
-      setError('Please enter a valid mobile number');
+      setError('Please enter a valid mobile number (at least 10 digits)');
+      return;
+    }
+    
+    // Check if mobile number contains only digits and optional + at start
+    const mobileRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+    if (!mobileRegex.test(mobileNumber.replace(/\s+/g, ''))) {
+      setError('Please enter a valid mobile number format');
       return;
     }
     
     setLoading(true);
+    console.log('Submitting mobile number for new user:', mobileNumber);
     
     try {
       const result = await saveNewUserData(mobileNumber);
+      console.log('saveNewUserData result:', result);
+      
       if (!result.success) {
         setError(result.error || 'Failed to save user data');
+        return;
       }
+      
+      // Success - modal will be closed by the context
+      console.log('User data saved successfully');
     } catch (error) {
+      console.error('Error in handleSubmit:', error);
       setError('Failed to save user data. Please try again.');
     } finally {
       setLoading(false);
@@ -47,7 +62,7 @@ const MobileNumberModal = () => {
   if (!showMobileModal) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
