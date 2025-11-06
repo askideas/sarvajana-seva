@@ -33,25 +33,6 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  // Initialize Google Translate
-  useEffect(() => {
-    const initGoogleTranslate = () => {
-      // Check if Google Translate loaded successfully after 3 seconds
-      setTimeout(() => {
-        const googleTranslateElement = document.getElementById('google_translate_element');
-        const manualSelect = document.getElementById('manual-translate-select');
-        
-        if (googleTranslateElement && !googleTranslateElement.querySelector('.goog-te-combo') && manualSelect) {
-          // Google Translate failed to load, show manual selector
-          manualSelect.style.display = 'block';
-          console.log('Using manual language selector as fallback');
-        }
-      }, 3000);
-    };
-
-    initGoogleTranslate();
-  }, []);
-
   const navigation = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -110,33 +91,6 @@ const Header = () => {
               <button className="mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
                 Login
               </button>
-
-              {/* Language Selector */}
-              <div className="ml-2 flex items-center">
-                <div id="google_translate_element" className="google-translate-container"></div>
-                <select 
-                  onChange={(e) => {
-                    const lang = e.target.value;
-                    if (lang && lang !== 'en') {
-                      const currentUrl = encodeURIComponent(window.location.href);
-                      window.open(`https://translate.google.com/translate?sl=en&tl=${lang}&u=${currentUrl}`, '_blank');
-                    }
-                  }}
-                  className="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white hover:border-orange-400 focus:border-orange-500 focus:outline-none"
-                  style={{ display: 'none' }}
-                  id="manual-translate-select"
-                >
-                  <option value="en">🌐 English</option>
-                  <option value="hi">हिंदी Hindi</option>
-                  <option value="te">తెలుగు Telugu</option>
-                  <option value="ta">தமிழ் Tamil</option>
-                  <option value="kn">ಕನ್ನಡ Kannada</option>
-                  <option value="ml">മലയാളം Malayalam</option>
-                  <option value="mr">मराठी Marathi</option>
-                  <option value="gu">ગુજરાતી Gujarati</option>
-                  <option value="bn">বাংলা Bengali</option>
-                </select>
-              </div>
             </div>
 
             {/* Mobile menu button */}
@@ -216,34 +170,7 @@ const Header = () => {
                   </button>
                 </div>
 
-                {/* Mobile Language Selector */}
-                <div className="px-4 py-2 mt-4 border-t border-gray-200 pt-4">
-                  <div className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                    <span className="mr-2">🌐</span>
-                    Language
-                  </div>
-                  <div id="google_translate_element_mobile"></div>
-                  <select 
-                    onChange={(e) => {
-                      const lang = e.target.value;
-                      if (lang && lang !== 'en') {
-                        const currentUrl = encodeURIComponent(window.location.href);
-                        window.open(`https://translate.google.com/translate?sl=en&tl=${lang}&u=${currentUrl}`, '_blank');
-                      }
-                    }}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white"
-                  >
-                    <option value="en">🌐 Choose Language</option>
-                    <option value="hi">हिंदी Hindi</option>
-                    <option value="te">తెలుగు Telugu</option>
-                    <option value="ta">தமிழ் Tamil</option>
-                    <option value="kn">ಕನ್ನಡ Kannada</option>
-                    <option value="ml">മലയാളം Malayalam</option>
-                    <option value="mr">मराठी Marathi</option>
-                    <option value="gu">ગુજરાતી Gujarati</option>
-                    <option value="bn">বাংলা Bengali</option>
-                  </select>
-                </div>
+
               </div>
             </div>
           </div>
