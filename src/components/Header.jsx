@@ -1,10 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { User } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import Logo from '../assets/logo.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const location = useLocation();
+  const { user, signInWithGoogle, logout, loading } = useAuth();
+
+  const handleLogin = async () => {
+    if (loading) return;
+    
+    try {
+      const result = await signInWithGoogle();
+      if (result.success) {
+        console.log('Login successful');
+      } else {
+        console.error('Login failed:', result.error);
+        alert('Login failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed. Please try again.');
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setShowUserMenu(false);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   // Close sidebar when clicking outside or pressing escape
   useEffect(() => {
@@ -88,9 +118,79 @@ const Header = () => {
               ))}
               
               {/* Login Button */}
-              <button className="mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
-                Login
-              </button>
+              {user ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="mx-2 flex items-center space-x-2 px-3 py-2 bg-white border border-gray-200 rounded-full hover:shadow-md transition-all duration-300 transform hover:scale-105"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                      <User className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-gray-700 font-medium text-sm max-w-24 truncate">
+                      {user.displayName?.split(' ')[0] || 'User'}
+                    </span>
+                    <svg className="w-4 h-4 text-gray-500 transition-transform duration-200" style={{ transform: showUserMenu ? 'rotate(180deg)' : 'rotate(0deg)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {showUserMenu && (
+                    <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                      <div className="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                            <User className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-white truncate">{user.displayName || 'User'}</div>
+                            <div className="text-orange-100 text-sm truncate">{user.email}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="py-2">
+                        <Link
+                          to="/profile"
+                          onClick={() => setShowUserMenu(false)}
+                          className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
+                          <User className="h-4 w-4 mr-3 text-gray-400" />
+                          <span className="font-medium">My Profile</span>
+                        </Link>
+                        <Link
+                          to="/profile"
+                          onClick={() => setShowUserMenu(false)}
+                          className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
+                          <svg className="h-4 w-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span className="font-medium">Settings</span>
+                        </Link>
+                        <div className="border-t border-gray-100 mt-2 pt-2">
+                          <button
+                            onClick={handleLogout}
+                            className="flex items-center w-full px-4 py-3 text-red-600 hover:bg-red-50 transition-colors"
+                          >
+                            <svg className="h-4 w-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span className="font-medium">Sign Out</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  onClick={handleLogin}
+                  disabled={loading}
+                  className="mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+                >
+                  {loading ? 'Logging in...' : 'Login'}
+                </button>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -162,12 +262,54 @@ const Header = () => {
 
                 {/* Mobile Login Button */}
                 <div className="px-4 py-2 mt-4">
-                  <button 
-                    onClick={() => setIsMenuOpen(false)}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
-                  >
-                    Login
-                  </button>
+                  {user ? (
+                    <div className="space-y-3">
+                      <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                            <User className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-white truncate">{user.displayName}</div>
+                            <div className="text-orange-100 text-sm truncate">{user.email}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Link
+                          to="/profile"
+                          onClick={() => setIsMenuOpen(false)}
+                          className="w-full px-4 py-3 bg-white border border-orange-200 text-orange-600 font-medium rounded-lg hover:bg-orange-50 transition-all duration-300 flex items-center justify-center"
+                        >
+                          <User className="h-4 w-4 mr-2" />
+                          View Profile
+                        </Link>
+                        <button 
+                          onClick={() => {
+                            handleLogout();
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full px-4 py-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition-all duration-300 flex items-center justify-center"
+                        >
+                          <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                          </svg>
+                          Sign Out
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={() => {
+                        handleLogin();
+                        setIsMenuOpen(false);
+                      }}
+                      disabled={loading}
+                      className="w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 disabled:opacity-50"
+                    >
+                      {loading ? 'Logging in...' : 'Login'}
+                    </button>
+                  )}
                 </div>
 
 
