@@ -65,21 +65,25 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
+    { name: 'Live Pooja', path: '/live-pooja' },
+    { name: 'Healing', path: '/healing' },
+    { name: 'Deeksha', path: '/deeksha' },
+    { name: 'Pithru Dharpanam', path: '/pithru-dharpanam' },
+    { name: 'Annadanam', path: '/annadanam' },
+    { name: 'Aashirvadam', path: '/aashirvadam' },
     { name: 'Poojas', path: '/poojas' },
     { name: 'Products', path: '/products' },
     { name: 'Donations', path: '/donations' },
-    { name: 'Astrology', path: '/astrology' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Astrology', path: '/astrology' }
   ];
 
   return (
     <>
       <header className="bg-gradient-to-r from-stone-50 via-neutral-50 to-stone-100 shadow-md sticky top-0 z-50 border-b border-stone-200">
         <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="flex flex-wrap items-center justify-between min-h-14 sm:min-h-16 py-2">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
+            <Link to="/" className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
               <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-md border-2 border-stone-200 hover:border-stone-300 transition-colors duration-300">
                 <img 
                   src={Logo}
@@ -98,31 +102,35 @@ const Header = () => {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center">
+            {/* Desktop Navigation - flows with the logo row */}
+            <div className="hidden md:flex items-center flex-wrap flex-1 justify-center mx-4 gap-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`group relative px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                  className={`group relative px-3 py-2 text-sm font-medium transition-all duration-300 whitespace-nowrap rounded-md ${
                     location.pathname === item.path
                       ? 'text-transparent bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text font-semibold'
-                      : 'text-gray-600 hover:text-orange-600'
+                      : 'text-gray-600 hover:text-orange-600 hover:bg-stone-50'
                   }`}
                 >
                   <span>{item.name}</span>
                   {location.pathname === item.path && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
                   )}
                 </Link>
               ))}
-              
+            </div>
+
+            {/* Login and Mobile Menu Button */}
+            <div className="flex items-center space-x-2 flex-shrink-0">
               {/* Login Button */}
               {user ? (
                 <div className="relative">
+                  {/* Desktop User Dropdown */}
                   <button
                     onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="mx-2 flex items-center space-x-2 px-3 py-2 bg-white border border-gray-200 rounded-full hover:shadow-md transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                    className="hidden md:flex mx-2 items-center space-x-2 px-3 py-2 bg-white border border-gray-200 rounded-full hover:shadow-md transition-all duration-300 transform hover:scale-105 cursor-pointer"
                   >
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
                       <User className="h-4 w-4 text-white" />
@@ -134,8 +142,19 @@ const Header = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
+                  
+                  {/* Mobile User Avatar (clickable - redirects to profile) */}
+                  <Link 
+                    to="/profile" 
+                    className="md:hidden mx-2 flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                      <User className="h-4 w-4 text-white" />
+                    </div>
+                  </Link>
+                  
                   {showUserMenu && (
-                    <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                    <div className="hidden md:block absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
                       <div className="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-4">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
@@ -175,22 +194,22 @@ const Header = () => {
                 <button
                   onClick={handleLogin}
                   disabled={loading}
-                  className="mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                  className="hidden md:flex mx-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium text-sm rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {loading ? 'Logging in...' : 'Login'}
                 </button>
               )}
-            </div>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="mobile-menu-button md:hidden p-2 rounded-md text-gray-600 hover:text-stone-700 hover:bg-stone-100 transition-colors duration-200 cursor-pointer"
-            >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="mobile-menu-button md:hidden p-2 rounded-md text-gray-600 hover:text-stone-700 hover:bg-stone-100 transition-colors duration-200 cursor-pointer"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </nav>
       </header>
